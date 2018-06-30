@@ -42,8 +42,11 @@
 			<div class="row cl">
 				<div class="formControls col-xs-8 col-xs-offset-3">
 					<input name="verify" class="input-text size-L" type="text" placeholder="验证码" onblur="if(this.value==''){this.value=''}" onclick="if(this.value=='验证码:'){this.value='';}" value="" style="width:150px;">
-					<img id="verify_img" src="__URL__/captcha">
-					<a id="kanbuq" href="javascript:refreshVerify();">看不清，换一张</a>
+					<img onclick="refreshVerify()" style="width:207px;height: 40px;" id="verify_img" src="__URL__/captcha"><br>
+					<div style="width:360px;height:20px;text-align:right;">
+						<a style="text-align: right;" id="kanbuq" href="javascript:refreshVerify();">看不清，换一张</a>
+					</div>
+
 				</div>
 			</div>
 			<div class="row cl">

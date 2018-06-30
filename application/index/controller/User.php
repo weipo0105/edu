@@ -55,10 +55,10 @@ class User extends Base
             $user = UserModel::get($map);
             //return ['status'=>1,'message'=>$user,'data'=>$data];
             if($user == null){
-                $result = '没有找到该用户';
+                $result = '用户名或密码错误';
             }else{
                 $status = 1;
-                $result = '恭喜！验证通过，点击【确定】进入';
+                $result = '恭喜！验证通过';
             }
         }
 
