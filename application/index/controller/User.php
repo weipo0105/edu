@@ -10,9 +10,11 @@ namespace app\index\controller;
 use think\captcha\Captcha;
 use think\Request;
 use app\index\model\User as UserModel;
+use think\Session;
 class User extends Base
 {
     public function login(){
+        $this->alreadyLogin();//防止用户重复登陆
         return $this->view->fetch();
     }
 
@@ -59,6 +61,11 @@ class User extends Base
             }else{
                 $status = 1;
                 $result = '恭喜！验证通过';
+
+                //设置用户登陆信息，session
+                Session::set('user_id',$user->id);
+                Session::set('user_info',$user->getData());//获取用户所有信息，返回的是二维为数组
+                //var_dump(session('user_info'));die;
             }
         }
 
@@ -77,6 +84,11 @@ class User extends Base
     }
 
     public function logout(){
+
+        //注销session
+        Session::delete('user_id');
+        Session::delete('user_info');
+        $this->success('注销成功！','user/login');
         return $this->view->fetch();
     }
 }
